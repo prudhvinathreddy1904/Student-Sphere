@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 Student Sphere
+
+**Student Sphere** is a collaborative college notice board where students can share ideas, post notices, announce events, find lost items, and form study groups — all in one place.
+
+## What It Does
+
+- **Share & Discover** — Post ideas, notices, events, lost-and-found alerts, or study group invitations. Browse what others are sharing in real time.
+- **Vote & Engage** — Upvote posts you find useful. Comment to start conversations and connect with fellow students.
+- **Search & Filter** — Quickly find what matters using category filters, keyword search, and sorting by newest or most voted.
+- **Your Posts, Your Control** — Sign up, log in, and manage your own posts. Only you can edit or delete what you've created.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Framework | [Next.js 16](https://nextjs.org/) (App Router) |
+| Frontend | React 19, CSS Modules |
+| Backend | Next.js Route Handlers (API) |
+| Database | SQLite via [better-sqlite3](https://github.com/WiseLibs/better-sqlite3) |
+| Auth | Cookie-based sessions with PBKDF2 password hashing |
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the landing page.  
+Navigate to [http://localhost:3000/board](http://localhost:3000/board) to use the board.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ Full CRUD — Create, read, update, and delete posts
+- ✅ Authentication — Signup & login with secure password hashing
+- ✅ Upvoting — Toggle votes (one per user per post)
+- ✅ Comments — Threaded comments on every post
+- ✅ Categories — Idea, Notice, Event, Lost & Found, Study Group
+- ✅ Search & Filter — Full-text search + category filtering + sort
+- ✅ Responsive UI — Works on mobile, tablet, and desktop
+- ✅ Loading Skeletons — Smooth loading states throughout
+- ✅ Empty States — Friendly messages when no content matches
+- ✅ Form Validation — Client-side validation with inline errors
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── page.tsx                    # Landing page
+├── login/page.tsx              # Login page
+├── signup/page.tsx             # Signup page
+├── board/
+│   ├── page.tsx                # Main board (post feed)
+│   ├── layout.tsx              # Board layout (header + nav)
+│   ├── components/             # PostCard, CreateModal, Search, etc.
+│   └── post/[id]/page.tsx      # Post detail + comments
+├── api/
+│   ├── auth/                   # signup, login, logout, me
+│   └── posts/                  # CRUD, vote, comments
+lib/
+├── db.ts                       # Database schema + queries
+└── auth.ts                     # Password hashing + sessions
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built for GCSRM Recruitment 2026 — Technical Track (Web Development).
